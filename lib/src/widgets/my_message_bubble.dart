@@ -1,7 +1,13 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/src/domain/message.dart';
 
 class MessageBubble extends StatelessWidget {
-  const MessageBubble({super.key});
+  final Message message;
+  const MessageBubble({
+    super.key,
+    required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +17,12 @@ class MessageBubble extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.black,
+            color: Colors.blue,
             borderRadius: BorderRadius.circular(20)
           ),
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10 ),
-            child: Text("Pollas", style: TextStyle(color: Colors.white),),
+            child: Text(message.text),
           ),
         ),
         const SizedBox(height: 10,)
