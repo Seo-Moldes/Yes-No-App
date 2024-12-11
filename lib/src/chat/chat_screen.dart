@@ -6,18 +6,21 @@ import 'package:yes_no_app/src/widgets/her_message_bubble.dart';
 import 'package:yes_no_app/src/widgets/message_field_box.dart';
 import 'package:yes_no_app/src/widgets/my_message_bubble.dart';
 
+const String urlImage = "https://www.slovenskenovice.si/media/images/20230821/1505492.aec567cd.fill-256x256.jpg";
+
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    print("entra");
     return Scaffold(
       appBar: AppBar(
         leading: const Padding(
           padding: EdgeInsets.all(4.0),
           child: CircleAvatar(
             backgroundImage: NetworkImage(
-                "https://www.slovenskenovice.si/media/images/20230821/1505492.aec567cd.fill-256x256.jpg"),
+               urlImage),
           ),
         ),
         title: const Text("Charlize"),
@@ -48,7 +51,7 @@ class ChatView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final message = chatProvider.messageList[index];
                       return (message.fromWho == FromWho.hers)
-                          ? const HerMessageBubble()
+                          ? HerMessageBubble(message: message)
                           : MessageBubble(
                               message: message,
                             );
